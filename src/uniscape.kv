@@ -1,0 +1,73 @@
+#:kivy 2.2.1
+
+<UniScapeWindow>:
+    sv_input:sv_input
+    sv_output:sv_output
+    t_input:t_input
+    t_output:t_output
+    GridLayout:
+        cols: 2
+        spacing: 5
+        size: root.width, root.height
+
+        TextScroll:
+            id: sv_input
+            size_hint_y: 0.2
+
+            TextInput:
+                id: t_input
+                focus: True
+                multiline: False
+                size_hint_y: None
+                height: self.minimum_height
+                cursor_color: 'black'
+                on_text_validate: root.update_output()
+
+        Button:
+            size_hint: 0.1, 0.2
+            text: "Enter"
+            on_release: root.update_output()
+
+        TextScroll:
+            id: sv_output
+            size_hint_y: 0.8
+            # size_hint_y: None
+
+            OutputLabel:
+                id: t_output
+                valign: 'top'
+                font_name: 'fonts/DejaVuSansMono.ttf'
+                size_hint_y: None
+                size_hint_x: 1
+                text_size: self.width, self.height # works if scrolling isn't needed
+                # text_size: self.width, None
+                # height: self.texture_size[1]
+
+
+<BgColor@Widget>
+    background_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<OutputLabel@Label+BgColor>
+    color: 0, 0, 0, 1
+
+<ScrollSlider@Slider>
+    orientation: 'vertical'
+    size_hint_x: 0.05
+    cursor_size: '16sp', '16sp'
+    min: 0
+    max: 1
+    step: 0.01
+
+<TextScroll@ScrollView>
+    size_hint_x: 0.9
+    bar_width: '10dp'
+    # bar_color: 1, 0, 0, 1
+    effect_cls: "ScrollEffect"
+    scroll_type: ['bars', 'content']
+    do_scroll_x: False
