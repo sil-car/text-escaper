@@ -27,7 +27,8 @@ parts:
     source: https://github.com/sil-car/uniscape.git
     override-pull:
       snapcraftctl pull
-      snap_ver=$(grep 'version =' $SNAPCRAFT_PART_SRC/pyproject.toml | sed -r 's/^version = "(.*)"/\1/')
+      env | sort | grep CRAFT
+      snap_ver=$(grep 'version =' $CRAFT_PART_SRC/pyproject.toml | sed -r 's/^version = "(.*)"/\1/')
       snapcraftctl set-version "${snap_ver}"
       snapcraftctl set-grade "stable"
     build-packages:
