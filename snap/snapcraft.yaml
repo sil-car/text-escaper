@@ -25,7 +25,7 @@ parts:
   uniscape:
     plugin: python
     source: https://github.com/sil-car/uniscape.git
-    override-pull:
+    override-pull: |
       snapcraftctl pull
       env | sort | grep CRAFT
       snap_ver=$(grep 'version =' $CRAFT_PART_SRC/pyproject.toml | sed -r 's/^version = "(.*)"/\1/')
