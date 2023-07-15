@@ -1,0 +1,58 @@
+name: uniscape
+summary: "Convert a string to its unicode representation."
+website: https://github.com/sil-car/text-escaper
+contact: https://github.com/sil-car/text-escaper/issues
+issues: https://github.com/sil-car/text-escaper/issues
+license: MIT
+title: UniScape
+description: |
+  Choose the GUI app or the commandline.
+adopt-info: uniscape # for version and grade
+confinement: devmode
+base: core22
+architectures:
+  - build-on: [arm64, amd64]
+
+apps:
+  uniscape:
+    command: bin/uniscape
+
+  gui:
+    command: bin/uniscape-gui
+
+parts:
+  uniscape:
+    plugin: python
+    source: https://github.com/sil-car/text-escape.git
+    override-pull:
+      snapcraftctl pull
+      snap_ver=$(grep 'version =' $SNAPCRAFT_PART_SRC/pyproject.toml | sed -r 's/^version = "(.*)"/\1/')
+      snapcraftctl set-version "${snap_ver}"
+      snapcraftctl set-grade "stable"
+    build-packages:
+      - python3-pip
+    override-build: |
+      # Install dephell to convert pyproject.toml to setup.py, which is req'd. by snapcraftctl.
+
+      # core20
+      # https://forum.snapcraft.io/t/building-a-core20-python-snap-using-pyproject-toml/22028/2
+      pip3 install --user dephell[full]
+      $HOME/.local/bin/dephell deps convert --from-path=pyproject.toml --from-format=poetry --to-path=setup.py --to-format=setuppy
+
+      snapcraftctl build
+
+  # cleanup:
+  #   # https://forum.snapcraft.io/t/reduce-size-of-qt5-app-snap/31030/7
+  #   after:
+  #     - uniscape
+  #   plugin: nil
+  #   build-snaps:
+  #     - core22
+  #   override-prime: |
+  #     set -eux
+  #     cd "/snap/core22/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+  #     for x in include lib64 usr/include usr/lib/pkgconfig usr/share/doc-base usr/share/ffmpeg/examples usr/share/man; do
+  #       rm -rf "$SNAPCRAFT_PRIME/$x"
+  #     done
+  #     find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+  #     find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uniscape"
+version = "0.1"
+authors = [
+    {name = "Nate Marti", email = "nate_marti@sil.org"},
+]
+requires-python = ">=3.7"
+keywords = ["unicode", "conversion"]
+license = {file = "LICENSE"}
+dynamic = ["dependencies", "readme"]
+
+[project.scripts]
+uniscape = "src.cli:main"
+
+[project.gui-scripts]
+uniscape-gui = "src.app:main"
+
+[tool.setuptools]
+package-dir = {"uniscape" = "src"}
+license-files = ["LICENSE"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+readme = {file = ["README.md"], content-type = "text/plain"}
