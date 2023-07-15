@@ -8,3 +8,5 @@ def string_to_unicode(word):
 def wordlist_to_unicode(words):
     return ' '.join(string_to_unicode(w) for w in words)
 
+def wordlist_to_unicode_list(words):
+    return [string_to_unicode(w) for w in words]

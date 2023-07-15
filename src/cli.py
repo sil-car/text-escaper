@@ -3,36 +3,71 @@
 # Ref:
 # - https://stackoverflow.com/questions/58942873/convert-a-string-into-a-unicode-escape-sequence#58943018
 
+import argparse
 import sys
 
-from esc import string_to_unicode
-from esc import wordlist_to_unicode
+from esc import wordlist_to_unicode_list
 
 
-SPACES = False
-usage = f"Usage:\n\t{sys.argv[0]} STRING\n\techo \"STRING\" | {sys.argv[0]}"
-output = "\\u0053\\u0054\\u0052\\u0049\\u004e\\u0047"
-help = "Convert a string to its unicode representation; accepts piped input or a series of arguments."
-args = sys.argv[1:]
+def setup_parser():
+    usage = f"Usage:\n\t{sys.argv[0]} STRING\n\techo \"STRING\" | {sys.argv[0]}"
+    output = "\\u0053\\u0054\\u0052\\u0049\\u004e\\u0047"
+    description = "Convert a string to its unicode representation; accepts piped input or a series of arguments."
 
-if '-h' in args or '--help' in args:
-    print(usage)
-    print(f"Output:\n\t{output}\n")
-    print(help)
-    exit()
-for o in ['-s', '--spaces']:
-    if o in args:
-        SPACES = True
-        args.remove(o)
-        break
+    parser = argparse.ArgumentParser(
+        description=description,
+        # usage=f"{usage}\n{output}",
+        )
+    parser.add_argument(
+        '-s', '--escape-spaces', action='store_true',
+        help=r"Output spaces as escaped value '\u0020' instead of ' '.",
+        )
+    parser.add_argument(
+        '-w', '--with-text', action='store_true',
+        help=r"Output original text before its escaped values: 'hôtel \u0068\u006f\u0302\u0074\u0065\u006c'.",
+        )
+    parser.add_argument(
+        'STRING',
+        nargs="*",
+    )
 
-if not sys.stdin.isatty():
-    for line in sys.stdin:
-        output = wordlist_to_unicode(line.rstrip().split())
-        break
-elif len(args) > 0:
-    output = wordlist_to_unicode(args)
+    return parser.parse_args()
 
-if SPACES:
-    output = output.replace(' ', rf'\u0020')
-print(output)
+def main():
+    args = setup_parser()
+
+    # Make list of input words.
+    text_words = []
+    if not sys.stdin.isatty(): # accept piped input
+        for line in sys.stdin:
+            text_words.extend(line.rstrip().split())
+            # uniscaped_words = wordlist_to_unicode_list(text_words)
+            break
+    if len(args.STRING) > 0: # accept args input
+        text_words.extend(args.STRING)
+
+    # Make list of uniscaped words.
+    uniscaped_words = wordlist_to_unicode_list(text_words)
+
+    # Prepare output string.
+    if args.with_text:
+        # Merge text_words with uniscaped_words.
+        output_words = []
+        min_len = min(len(text_words), len(uniscaped_words))
+        for i in range(min_len):
+            output_words.append(text_words[i])
+            output_words.append(uniscaped_words[i])
+        # Add any extra items if one list is longer (shouldn't happen).
+        # output_words += text_words[min_len:] + uniscaped_words[min_len:]
+    else:
+        output_words =  uniscaped_words
+    output_string = ' '.join(output_words)
+
+    # Convert spaces if requested.
+    if args.escape_spaces:
+        output_string = output_string.replace(' ', rf'\u0020')
+
+    print(output_string)
+
+if __name__ == '__main__':
+    main()
