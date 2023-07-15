@@ -9,6 +9,8 @@ description: |
   Choose the GUI app or the commandline.
 adopt-info: uniscape # for version and grade
 confinement: devmode
+# core22 migration:
+#   https://forum.snapcraft.io/t/micro-howto-migrate-from-core20-to-core22/30188
 base: core22
 architectures:
   - build-on: amd64
