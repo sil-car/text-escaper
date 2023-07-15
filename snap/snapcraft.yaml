@@ -46,9 +46,9 @@ parts:
       craftctl set version="${snap_ver}"
       craftctl set grade="stable"
     build-packages:
-      # - libsdl2-dev
-      # - libsdl2-image-dev
-      # - libsdl2-ttf-dev
+      - libsdl2-dev
+      - libsdl2-image-dev
+      - libsdl2-ttf-dev
       - python3-pip
     override-build: |
       # Install dephell to convert pyproject.toml to setup.py, which is req'd. by snapcraftctl.
@@ -63,18 +63,18 @@ parts:
       - libsdl2-2.0-0
       - xclip
 
-  # cleanup:
-  #   # https://forum.snapcraft.io/t/reduce-size-of-qt5-app-snap/31030/7
-  #   after:
-  #     - uniscape
-  #   plugin: nil
-  #   build-snaps:
-  #     - core22
-  #   override-prime: |
-  #     set -eux
-  #     cd "/snap/core22/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
-  #     for x in include lib64 usr/include usr/lib/pkgconfig usr/share/doc-base usr/share/ffmpeg/examples usr/share/man; do
-  #       rm -rf "$SNAPCRAFT_PRIME/$x"
-  #     done
-  #     find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
-  #     find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
+  cleanup:
+    # https://forum.snapcraft.io/t/reduce-size-of-qt5-app-snap/31030/7
+    after:
+      - uniscape
+    plugin: nil
+    build-snaps:
+      - core22
+    override-prime: |
+      set -eux
+      cd "/snap/core22/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+      for x in include lib64 usr/include usr/lib/pkgconfig usr/share/doc-base usr/share/ffmpeg/examples usr/share/man; do
+        rm -rf "$SNAPCRAFT_PRIME/$x"
+      done
+      find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+      find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
