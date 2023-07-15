@@ -1,8 +1,8 @@
 name: uniscape
 summary: "Convert a string to its unicode representation."
-website: https://github.com/sil-car/text-escaper
-contact: https://github.com/sil-car/text-escaper/issues
-issues: https://github.com/sil-car/text-escaper/issues
+website: https://github.com/sil-car/uniscape
+contact: https://github.com/sil-car/uniscape/issues
+issues: https://github.com/sil-car/uniscape/issues
 license: MIT
 title: UniScape
 description: |
@@ -23,7 +23,7 @@ apps:
 parts:
   uniscape:
     plugin: python
-    source: https://github.com/sil-car/text-escape.git
+    source: https://github.com/sil-car/uniscape.git
     override-pull:
       snapcraftctl pull
       snap_ver=$(grep 'version =' $SNAPCRAFT_PART_SRC/pyproject.toml | sed -r 's/^version = "(.*)"/\1/')
