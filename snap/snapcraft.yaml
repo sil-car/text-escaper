@@ -19,10 +19,15 @@ architectures:
 apps:
   uniscape:
     command: bin/uniscape
+    environment:
+      # Add site-packages/squeeze_vid to PYTHONPATH, otherwise module imports
+      #   have to be explicit instead of relative to the project package.
+      PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
 
   gui:
     command: bin/uniscape-gui
-    # desktop: $SNAP/meta/gui/uniscape.desktop
+    environment:
+      PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
     extensions: [gnome]
     plugs:
       - gsettings
