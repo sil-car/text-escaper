@@ -41,7 +41,6 @@ def main():
     if not sys.stdin.isatty(): # accept piped input
         for line in sys.stdin:
             text_words.extend(line.rstrip().split())
-            # uniscaped_words = wordlist_to_unicode_list(text_words)
             break
     if len(args.STRING) > 0: # accept args input
         text_words.extend(args.STRING)
@@ -65,7 +64,7 @@ def main():
 
     # Convert spaces if requested.
     if args.escape_spaces:
-        output_string = output_string.replace(' ', rf'\u0020')
+        output_string = output_string.replace(' ', r'\u0020')
 
     print(output_string)
 
