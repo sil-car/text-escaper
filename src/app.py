@@ -17,5 +17,8 @@ class UniScapeApp(App):
     def build(self):
         return UniScapeWindow()
 
-if __name__ == '__main__':
+def main():
     UniScapeApp().run()
+
+if __name__ == '__main__':
+    main()
