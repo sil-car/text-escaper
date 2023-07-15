@@ -9,7 +9,7 @@ authors = [
     {name = "Nate Marti", email = "nate_marti@sil.org"},
 ]
 requires-python = ">=3.7"
-keywords = ["unicode", "conversion"]
+keywords = ["unicode", "convert"]
 license = {file = "LICENSE"}
 dynamic = ["dependencies", "readme"]
 
