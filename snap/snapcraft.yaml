@@ -28,6 +28,7 @@ apps:
     command: bin/uniscape-gui
     environment:
       PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
+      USE_X11: 1
     extensions: [gnome]
     plugs:
       - gsettings
@@ -46,9 +47,9 @@ parts:
       craftctl set version="${snap_ver}"
       craftctl set grade="stable"
     build-packages:
-      - libsdl2-dev
-      - libsdl2-image-dev
-      - libsdl2-ttf-dev
+      # - libsdl2-dev
+      # - libsdl2-image-dev
+      # - libsdl2-ttf-dev
       - python3-pip
     override-build: |
       # Install dephell to convert pyproject.toml to setup.py, which is req'd. by snapcraftctl.
