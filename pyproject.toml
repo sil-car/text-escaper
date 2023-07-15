@@ -20,6 +20,7 @@ uniscape = "src.cli:main"
 uniscape-gui = "src.app:main"
 
 [tool.setuptools]
+packages = ["uniscape"]
 package-dir = {"uniscape" = "src"}
 license-files = ["LICENSE"]
 
