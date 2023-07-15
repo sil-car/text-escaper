@@ -22,7 +22,7 @@ apps:
 
   gui:
     command: bin/uniscape-gui
-    # desktop: ''
+    # desktop: $SNAP/meta/gui/uniscape.desktop
     extensions: [gnome]
     plugs:
       - gsettings
