@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=UniScape
+Comment=Convert strings to unicode
+Exec=uniscape.gui
+Terminal=false
+Type=Application
+StartupNotify=false
+Icon=${SNAP}/meta/gui/uniscape.png
+Categories=Utility;
+Keywords=Unicode;Convert;
