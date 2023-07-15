@@ -11,7 +11,8 @@ adopt-info: uniscape # for version and grade
 confinement: devmode
 base: core22
 architectures:
-  - build-on: [arm64, amd64]
+  - build-on: amd64
+    build-for: all
 
 apps:
   uniscape:
