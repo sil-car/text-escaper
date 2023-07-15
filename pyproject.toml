@@ -17,7 +17,7 @@ dynamic = ["dependencies", "readme"]
 uniscape = "uniscape.cli:main"
 
 [project.gui-scripts]
-uniscape-gui = "uniscape.app:main"
+uniscape-gui = "uniscape.app"
 
 [tool.setuptools]
 packages = ["uniscape"]
