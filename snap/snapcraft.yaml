@@ -26,11 +26,11 @@ parts:
     plugin: python
     source: https://github.com/sil-car/uniscape.git
     override-pull: |
-      snapcraftctl pull
+      craftctl default
       env | sort | grep CRAFT
       snap_ver=$(grep 'version =' $CRAFT_PART_SRC/pyproject.toml | sed -r 's/^version = "(.*)"/\1/')
-      snapcraftctl set-version "${snap_ver}"
-      snapcraftctl set-grade "stable"
+      craftctl set-version "${snap_ver}"
+      craftctl set-grade "stable"
     build-packages:
       - python3-pip
     override-build: |
