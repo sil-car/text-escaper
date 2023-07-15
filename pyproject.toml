@@ -14,10 +14,10 @@ license = {file = "LICENSE"}
 dynamic = ["dependencies", "readme"]
 
 [project.scripts]
-uniscape = "src.cli:main"
+uniscape = "uniscape.cli:main"
 
 [project.gui-scripts]
-uniscape-gui = "src.app:main"
+uniscape-gui = "uniscape.app:main"
 
 [tool.setuptools]
 packages = ["uniscape"]
