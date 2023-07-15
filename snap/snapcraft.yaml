@@ -27,12 +27,12 @@ apps:
   gui:
     command: bin/uniscape-gui
     environment:
-      LD_PRELOAD: $LD_PRELOAD:$SNAP/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0
+      # LD_PRELOAD: $LD_PRELOAD:$SNAP/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0
       PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
       # USE_X11: 1 # doesn't fix black screen problem
     extensions: [gnome]
     plugs:
-      - gsettings
+      # - gsettings
       - opengl
       - x11
       - wayland
@@ -54,29 +54,26 @@ parts:
       - python3-pip
     override-build: |
       # Install dephell to convert pyproject.toml to setup.py, which is req'd. by snapcraftctl.
-
-      # core20
       # https://forum.snapcraft.io/t/building-a-core20-python-snap-using-pyproject-toml/22028/2
       pip3 install --user dephell[full]
       $HOME/.local/bin/dephell deps convert --from-path=pyproject.toml --from-format=poetry --to-path=setup.py --to-format=setuppy
-
       craftctl default
     stage-packages:
       - libsdl2-2.0-0
       - xclip
 
-  cleanup:
-    # https://forum.snapcraft.io/t/reduce-size-of-qt5-app-snap/31030/7
-    after:
-      - uniscape
-    plugin: nil
-    build-snaps:
-      - core22
-    override-prime: |
-      set -eux
-      cd "/snap/core22/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
-      for x in include lib64 usr/include usr/lib/pkgconfig usr/share/doc-base usr/share/ffmpeg/examples usr/share/man; do
-        rm -rf "$SNAPCRAFT_PRIME/$x"
-      done
-      find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
-      find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
+  # cleanup:
+  #   # https://forum.snapcraft.io/t/reduce-size-of-qt5-app-snap/31030/7
+  #   after:
+  #     - uniscape
+  #   plugin: nil
+  #   build-snaps:
+  #     - core22
+  #   override-prime: |
+  #     set -eux
+  #     cd "/snap/core22/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+  #     for x in include lib64 usr/include usr/lib/pkgconfig usr/share/doc-base usr/share/ffmpeg/examples usr/share/man; do
+  #       rm -rf "$SNAPCRAFT_PRIME/$x"
+  #     done
+  #     find $SNAPCRAFT_PRIME/usr/share/doc/ -type f -not -name 'copyright' -delete
+  #     find $SNAPCRAFT_PRIME/usr/share -type d -empty -delete
