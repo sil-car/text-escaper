@@ -11,7 +11,7 @@ authors = [
 requires-python = ">=3.7"
 keywords = ["unicode", "convert"]
 license = {file = "LICENSE"}
-dynamic = ["dependencies", "readme"]
+dynamic = ["readme"]
 
 [project.scripts]
 uniscape = "uniscape.cli:main"
@@ -25,5 +25,4 @@ package-dir = {"uniscape" = "src"}
 license-files = ["LICENSE"]
 
 [tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
 readme = {file = ["README.md"], content-type = "text/plain"}
