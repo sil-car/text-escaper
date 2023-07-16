@@ -10,14 +10,18 @@ from esc import wordlist_to_unicode_list
 
 
 def setup_parser():
-    usage = f"Usage:\n\t{sys.argv[0]} STRING\n\techo \"STRING\" | {sys.argv[0]}"
-    output = "\\u0053\\u0054\\u0052\\u0049\\u004e\\u0047"
+    usage = f"\n  {sys.argv[0]} STRING\n  echo \"STRING\" | {sys.argv[0]}"
+    output = "  \\u0053\\u0054\\u0052\\u0049\\u004e\\u0047"
     description = "Convert a string to its unicode representation; accepts piped input or a series of arguments."
 
     parser = argparse.ArgumentParser(
         description=description,
-        # usage=f"{usage}\n{output}",
+        usage=f"{usage}\n{output}",
         )
+    parser.add_argument(
+        '--gui-debug', action='store_true',
+        help=argparse.SUPPRESS,
+    )
     parser.add_argument(
         '-s', '--escape-spaces', action='store_true',
         help=r"Output spaces as escaped value '\u0020' instead of ' '.",
@@ -35,6 +39,9 @@ def setup_parser():
 
 def main():
     args = setup_parser()
+
+    if args.gui_debug:
+        pass
 
     # Make list of input words.
     text_words = []
