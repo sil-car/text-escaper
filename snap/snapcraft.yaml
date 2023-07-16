@@ -58,7 +58,8 @@ parts:
       pip3 install --user dephell[full]
       $HOME/.local/bin/dephell deps convert --from-path=pyproject.toml --from-format=poetry --to-path=setup.py --to-format=setuppy
       craftctl default
-    # stage-packages:
+    stage-packages:
+      - python3-tk
     #   - libsdl2-2.0-0
     #   - xclip
 
