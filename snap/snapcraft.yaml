@@ -52,6 +52,7 @@ parts:
       # - libsdl2-image-dev
       # - libsdl2-ttf-dev
       - python3-pip
+      - tk-dev
     override-build: |
       # Install dephell to convert pyproject.toml to setup.py, which is req'd. by snapcraftctl.
       # https://forum.snapcraft.io/t/building-a-core20-python-snap-using-pyproject-toml/22028/2
