@@ -27,9 +27,8 @@ apps:
   gui:
     command: bin/uniscape-gui
     environment:
-      # LD_PRELOAD: $LD_PRELOAD:$SNAP/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0
-      PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3.10:$SNAP/lib/python3.10/site-packages/uniscape
-      # USE_X11: 1 # doesn't fix black screen problem
+      # https://forum.snapcraft.io/t/modulenotfounderror-no-module-named-tkinter/28707/4
+      PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload:$SNAP/lib/python3.10/site-packages/uniscape
     extensions: [gnome]
     plugs:
       # - gsettings
@@ -52,10 +51,10 @@ parts:
       # - libsdl2-image-dev
       # - libsdl2-ttf-dev
       - python3-pip
-      - tk-dev
+      # - tk-dev
     override-build: |
-      # Reinstall python to include all of Tk. (https://stackoverflow.com/a/26358646)
-      apt install --reinstall python3
+      # # Reinstall python to include all of Tk. (https://stackoverflow.com/a/26358646)
+      # apt install --reinstall python3
       # Install dephell to convert pyproject.toml to setup.py, which is req'd. by snapcraftctl.
       # https://forum.snapcraft.io/t/building-a-core20-python-snap-using-pyproject-toml/22028/2
       pip3 install --user dephell[full]
