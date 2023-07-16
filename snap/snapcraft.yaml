@@ -28,7 +28,7 @@ apps:
     command: bin/uniscape-gui
     environment:
       # LD_PRELOAD: $LD_PRELOAD:$SNAP/usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0
-      PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
+      PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3.10:$SNAP/lib/python3.10/site-packages/uniscape
       # USE_X11: 1 # doesn't fix black screen problem
     extensions: [gnome]
     plugs:
