@@ -34,6 +34,7 @@ apps:
     environment:
       # https://forum.snapcraft.io/t/modulenotfounderror-no-module-named-tkinter/28707/4
       PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload
+      XDG_DATA_DIRS: $SNAP/usr/share:$XDG_DATA_DIRS # $SNAP/data-dir
     extensions: [gnome]
 
 parts:
