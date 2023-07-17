@@ -65,4 +65,4 @@ parts:
     organize:
       # uniscape.svg: usr/share/icons/hicolor/scalable/apps/
       # https://forum.snapcraft.io/t/detect-icon-without-altering-desktop-file/20202/6
-      uniscape.svg: meta/gui/icons/hicolor/scalable/apps/snap.uniscape.svg
+      uniscape.svg: meta/gui/icons/hicolor/scalable/apps/snap.uniscape.gui.svg
