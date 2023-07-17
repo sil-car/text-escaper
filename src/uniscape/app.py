@@ -13,8 +13,8 @@ from tkinter.ttk import Style
 from esc import wordlist_to_unicode
 
 class UniScapeWindow(Frame):
-    def __init__(self, root):
-        super().__init__()
+    def __init__(self, root, **kwargs):
+        super().__init__(**kwargs)
 
         # Set general mainframe properties.
         self.config(padding=(1, 1, 1, 1))
@@ -125,8 +125,8 @@ class UniScapeWindow(Frame):
         return 'break'
 
 class UniScapeApp(Tk):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         parent_dir = Path(__file__).parent
         # Set the theme.
         self.th = 'alt' # ok: alt default # no: clam classic
@@ -154,8 +154,9 @@ class UniScapeApp(Tk):
 
 
 def main():
-    root = UniScapeApp()
-    UniScapeWindow(root)
+    classname = "Uniscape"
+    root = UniScapeApp(className=classname)
+    UniScapeWindow(root, class_=classname)
     root.mainloop()
 
 if __name__ == '__main__':
