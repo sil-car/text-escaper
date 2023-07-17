@@ -9,3 +9,4 @@ StartupNotify=false
 Icon=snap.uniscape.gui
 Categories=Utility;
 Keywords=Unicode;Convert;Lookup;Reference;
+StartupWMClass=Uniscape
