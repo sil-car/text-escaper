@@ -8,7 +8,7 @@ a = Analysis(
     ['../src/uniscape/app.py'],
     pathex=[],
     binaries=[],
-    datas=[('../src/uniscape/icon.ico', .), ('../src/uniscape/UbuntuMono-R.ttf', .)],
+    datas=[('../src/uniscape/icon.ico', '.'), ('../src/uniscape/UbuntuMono-R.ttf', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
