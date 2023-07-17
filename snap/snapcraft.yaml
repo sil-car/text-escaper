@@ -34,7 +34,6 @@ apps:
     environment:
       # https://forum.snapcraft.io/t/modulenotfounderror-no-module-named-tkinter/28707/4
       PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload
-      XDG_DATA_DIRS: $SNAP/usr/share:$XDG_DATA_DIRS # $SNAP/data-dir
     extensions: [gnome]
 
 parts:
@@ -64,4 +63,6 @@ parts:
     plugin: dump
     source: snap/gui/
     organize:
-      uniscape.svg: usr/share/icons/hicolor/scalable/apps/
+      # uniscape.svg: usr/share/icons/hicolor/scalable/apps/
+      # https://forum.snapcraft.io/t/detect-icon-without-altering-desktop-file/20202/6
+      uniscape.svg: meta/gui/icons/hicolor/scalable/apps/snap.uniscape.svg
