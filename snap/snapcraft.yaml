@@ -16,6 +16,10 @@ architectures:
   - amd64
   - arm64
 
+layout:
+  /usr/share/tcltk:
+    symlink: $SNAP/usr/share/tcltk
+
 apps:
   uniscape:
     command: bin/uniscape
