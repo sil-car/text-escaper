@@ -16,7 +16,7 @@ def setup_parser():
 
     parser = argparse.ArgumentParser(
         description=description,
-        usage=f"{usage}\n{output}",
+        usage=f"{usage}\n\n{output}",
         )
     parser.add_argument(
         '--gui-debug', action='store_true',
