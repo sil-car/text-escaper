@@ -20,23 +20,21 @@ architectures:
 layout:
   /usr/share/tcltk:
     symlink: $SNAP/usr/share/tcltk
+environment:
+  # Add site-packages/<pkg> to PYTHONPATH, otherwise module imports
+  #   have to be explicit instead of relative to the project package.
+  PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
 
 apps:
   uniscape:
     command: bin/uniscape
-    environment:
-      # Add site-packages/squeeze_vid to PYTHONPATH, otherwise module imports
-      #   have to be explicit instead of relative to the project package.
-      PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
 
   gui:
     command: bin/uniscape-gui
     environment:
       # https://forum.snapcraft.io/t/modulenotfounderror-no-module-named-tkinter/28707/4
-      PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload:$SNAP/lib/python3.10/site-packages/uniscape
+      PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload
     extensions: [gnome]
-    # plugs:
-    #   - opengl
 
 parts:
   uniscape:
@@ -60,3 +58,9 @@ parts:
     stage-packages:
       - python3-tk
       - tcl8.6
+
+  desktop-icon:
+    plugin: dump
+    source: snap/gui/
+    organize:
+      uniscape.svg: usr/share/icons/hicolor/scalable/apps/
