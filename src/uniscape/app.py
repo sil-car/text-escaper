@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from tkinter import font
 from tkinter import Tk
 from tkinter import Text
@@ -125,6 +127,7 @@ class UniScapeWindow(Frame):
 class UniScapeApp(Tk):
     def __init__(self):
         super().__init__()
+        parent_dir = Path(__file__).parent
         # Set the theme.
         self.th = 'alt' # ok: alt default # no: clam classic
         # self.font = 'DejaVuSansMono' # diacritics don't combine
@@ -132,7 +135,8 @@ class UniScapeApp(Tk):
         # self.font = 'DejaVuSans' # works, but not monospaced
         # self.font = font.Font(family="FreeMono") # extra spaces after comined diacritics
         # self.font = 'NotoSansMono-Regular' # works
-        self.font = 'UbuntuSansMono-Regular' # works
+        # self.font = 'UbuntuSansMono-Regular' # works
+        self.font = str(parent_dir / 'UbuntuMono-R.ttf')
         s = Style()
         s.theme_use(self.th)
 

@@ -21,7 +21,7 @@ uniscape-gui = "uniscape.app:main"
 
 [tool.setuptools]
 packages = ["uniscape"]
-package-dir = {"uniscape" = "src"}
+package-dir = {"" = "src"}
 license-files = ["LICENSE"]
 
 [tool.setuptools.dynamic]
