@@ -5,7 +5,6 @@ Exec=uniscape.gui
 Terminal=false
 Type=Application
 StartupNotify=false
-# Icon=${SNAP}/meta/gui/uniscape.png
 Icon=snap.uniscape.gui
 Categories=Utility;
 Keywords=Unicode;Convert;Lookup;Reference;
