@@ -3,11 +3,30 @@ summary: "Convert a string to its unicode representation."
 website: https://github.com/sil-car/uniscape
 contact: https://github.com/sil-car/uniscape/issues
 issues: https://github.com/sil-car/uniscape/issues
-icon: snap/gui/uniscape.svg
+icon: snap/gui/uniscape.png
 license: MIT
 title: UniScape
 description: |
   Choose the GUI app or the commandline.
+
+  usage: 
+    uniscape STRING [-s|-w]
+    echo STRING | uniscape [-s|-w]
+
+    \u0053\u0054\u0052\u0049\u004e\u0047
+
+  Convert a string to its unicode representation; accepts piped input or a
+  series of arguments.
+
+  positional arguments:
+    STRING
+
+  options:
+    -h, --help           show this help message and exit
+    -s, --escape-spaces  Output spaces as escaped value '\u0020' instead of ' '.
+    -w, --with-text      Output original text before its escaped values: 'hôtel
+                       \u0068\u006f\u0302\u0074\u0065\u006c'.
+
 adopt-info: uniscape # for version and grade
 confinement: strict
 # core22 migration:
