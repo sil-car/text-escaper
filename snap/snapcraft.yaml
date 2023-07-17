@@ -3,6 +3,7 @@ summary: "Convert a string to its unicode representation."
 website: https://github.com/sil-car/uniscape
 contact: https://github.com/sil-car/uniscape/issues
 issues: https://github.com/sil-car/uniscape/issues
+icon: snap/gui/uniscape.svg
 license: MIT
 title: UniScape
 description: |
@@ -37,9 +38,9 @@ apps:
     plugs:
       # - gsettings
       - opengl
-      - x11
-      - wayland
-      - desktop-legacy
+      # - x11
+      # - wayland
+      # - desktop-legacy
 
 parts:
   uniscape:
