@@ -7,7 +7,7 @@ icon: snap/gui/uniscape.png
 license: MIT
 title: UniScape
 description: |
-  Choose the GUI app or the commandline.
+  Choose the GUI app (unicode.gui) or the commandline:
 
   usage: 
     uniscape STRING [-s|-w]
