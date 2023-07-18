@@ -25,7 +25,7 @@ description: |
     -h, --help           show this help message and exit
     -s, --escape-spaces  Output spaces as escaped value '\u0020' instead of ' '.
     -w, --with-text      Output original text before its escaped values: 'hôtel
-                       \u0068\u006f\u0302\u0074\u0065\u006c'.
+                         \u0068\u006f\u0302\u0074\u0065\u006c'.
 
 adopt-info: uniscape # for version and grade
 confinement: strict

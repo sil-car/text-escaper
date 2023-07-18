@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=UniScape
+Comment=Convert strings to unicode
+Exec=uniscape.gui
+Terminal=false
+Type=Application
+StartupNotify=false
+Icon=snap.uniscape.gui
+Categories=Utility;
+Keywords=Unicode;Convert;Lookup;Reference;
+StartupWMClass=Uniscape
