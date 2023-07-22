@@ -42,7 +42,7 @@ layout:
 environment:
   # Add site-packages/<pkg> to PYTHONPATH, otherwise module imports
   #   have to be explicit instead of relative to the project package.
-  PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
+  # PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
   XDG_DATA_DIRS: $SNAP/meta/gui:$XDG_DATA_DIRS
 
 apps:
@@ -68,8 +68,6 @@ parts:
     build-packages:
       - python3-pip
     override-build: |
-      # # Reinstall python to include all of Tk. (https://stackoverflow.com/a/26358646)
-      # apt install --reinstall python3
       # Install dephell to convert pyproject.toml to setup.py, which is req'd. by snapcraftctl.
       # https://forum.snapcraft.io/t/building-a-core20-python-snap-using-pyproject-toml/22028/2
       pip3 install --user dephell[full]

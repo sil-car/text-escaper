@@ -6,7 +6,7 @@
 import argparse
 import sys
 
-from esc import wordlist_to_unicode_list
+from .esc import wordlist_to_unicode_list
 
 
 def setup_parser():

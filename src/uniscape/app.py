@@ -1,3 +1,5 @@
+# $ python3 -c 'import uniscape.cli; uniscape.cli.main()' [ARGS]
+
 from pathlib import Path
 
 from tkinter import font
@@ -10,7 +12,7 @@ from tkinter.ttk import Label
 from tkinter.ttk import Scrollbar
 from tkinter.ttk import Style
 
-from esc import wordlist_to_unicode
+from .esc import wordlist_to_unicode
 
 class UniScapeWindow(Frame):
     def __init__(self, root, **kwargs):
