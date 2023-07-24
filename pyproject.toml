@@ -13,11 +13,13 @@ keywords = ["unicode", "convert", "lookup", "reference"]
 license = {file = "LICENSE"}
 dynamic = ["readme"]
 
+# [project.scripts]
+# uniscape = "uniscape.cli:main"
+# 
+# [project.gui-scripts]
+# uniscape-gui = "uniscape.app:main"
 [project.scripts]
-uniscape = "uniscape.cli:main"
-
-[project.gui-scripts]
-uniscape-gui = "uniscape.app:main"
+uniscape = "uniscape.app:main"
 
 [tool.setuptools]
 packages = ["uniscape"]
