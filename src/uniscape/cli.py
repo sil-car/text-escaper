@@ -6,7 +6,6 @@
 import argparse
 import sys
 
-from . import app
 from .esc import wordlist_to_unicode_list
 
 
@@ -40,10 +39,6 @@ def setup_parser():
 
 def main():
     args = setup_parser()
-    print(args)
-    if len(args) == 0:
-        app.main()
-        return
 
     # Make list of input words.
     text_words = []

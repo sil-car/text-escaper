@@ -1,5 +1,6 @@
 # $ python3 -c 'import uniscape.cli; uniscape.cli.main()' [ARGS]
 
+import sys
 from pathlib import Path
 
 from tkinter import font
@@ -12,6 +13,7 @@ from tkinter.ttk import Label
 from tkinter.ttk import Scrollbar
 from tkinter.ttk import Style
 
+from . import cli
 from .esc import wordlist_to_unicode
 
 class UniScapeWindow(Frame):
@@ -156,6 +158,9 @@ class UniScapeApp(Tk):
 
 
 def main():
+    if len(sys.argv) > 1:
+        cli.main()
+        return
     classname = "Uniscape"
     root = UniScapeApp(className=classname)
     UniScapeWindow(root, class_=classname)
