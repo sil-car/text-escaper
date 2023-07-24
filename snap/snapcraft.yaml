@@ -39,11 +39,11 @@ architectures:
 layout:
   /usr/share/tcltk:
     symlink: $SNAP/usr/share/tcltk
-environment:
+# environment:
   # Add site-packages/<pkg> to PYTHONPATH, otherwise module imports
   #   have to be explicit instead of relative to the project package.
   # PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
-  XDG_DATA_DIRS: $SNAP/meta/gui:$XDG_DATA_DIRS
+  # XDG_DATA_DIRS: $SNAP/meta/gui:$XDG_DATA_DIRS
 
 apps:
   uniscape:
