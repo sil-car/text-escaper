@@ -1,4 +1,4 @@
-# $ python3 -c 'import uniscape.cli; uniscape.cli.main()' [ARGS]
+# $ python3 -c 'import uniscape.app; uniscape.app.main()' [ARGS]
 
 import sys
 from pathlib import Path

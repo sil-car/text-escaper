@@ -39,26 +39,15 @@ architectures:
 layout:
   /usr/share/tcltk:
     symlink: $SNAP/usr/share/tcltk
-# environment:
-  # Add site-packages/<pkg> to PYTHONPATH, otherwise module imports
-  #   have to be explicit instead of relative to the project package.
-  # PYTHONPATH: $PYTHONPATH:$SNAP/lib/python3.10/site-packages/uniscape
-  # XDG_DATA_DIRS: $SNAP/meta/gui:$XDG_DATA_DIRS
 
 apps:
   uniscape:
+    # When a separate gui command was used the icon wasn't properly shown in panel.
     command: bin/uniscape
     environment:
       # https://forum.snapcraft.io/t/modulenotfounderror-no-module-named-tkinter/28707/4
       PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload
     extensions: [gnome]
-
-  # gui:
-  #   command: bin/uniscape-gui
-  #   environment:
-  #     # https://forum.snapcraft.io/t/modulenotfounderror-no-module-named-tkinter/28707/4
-  #     PYTHONPATH: $PYTHONPATH:$SNAP/usr/lib/python3.10:$SNAP/usr/lib/python3.10/lib-dynload
-  #   extensions: [gnome]
 
 parts:
   uniscape:
@@ -80,11 +69,3 @@ parts:
     stage-packages:
       - python3-tk
       - tcl8.6
-
-  # desktop-icon:
-  #   plugin: dump
-  #   source: snap/gui/
-  #   organize:
-  #     # uniscape.svg: usr/share/icons/hicolor/scalable/apps/
-  #     # https://forum.snapcraft.io/t/detect-icon-without-altering-desktop-file/20202/6
-  #     uniscape.svg: meta/gui/icons/hicolor/scalable/apps/snap.uniscape.gui.svg
