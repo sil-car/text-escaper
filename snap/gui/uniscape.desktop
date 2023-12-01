@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=UniScape
 Comment=Convert strings to unicode
-# Exec=uniscape.gui
 Exec=uniscape
 Terminal=false
 Type=Application
