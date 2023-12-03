@@ -158,7 +158,7 @@ class UniScapeApp(Tk):
 
 
 def main():
-    if len(sys.argv) > 1 or not sys.stdin.isatty():
+    if len(sys.argv) > 1 or ( not sys.stdin.isatty() and sys.stdout.isatty() ):
         cli.main()
         return
     classname = "Uniscape"
